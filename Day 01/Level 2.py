@@ -2,21 +2,27 @@
 """
 Solution to part 2
 """
-import sys
-
 from pathlib import Path
 
-from aoc_io.aoc_io import DATA_FILENAME, get_input, submit_output
+DATA_FILENAME = "input.txt"
 
 
 CURRENT_DIR = Path(__file__).resolve().parent
 INPUT_FILE_PATH = CURRENT_DIR / DATA_FILENAME
 
-sys.path.append(str(CURRENT_DIR))
+# sys.path.append(str(CURRENT_DIR))
 
 # Download input
-get_input(2020, 1, INPUT_FILE_PATH)
+# get_input(2020, 1, INPUT_FILE_PATH)
 
 # Read input
 with INPUT_FILE_PATH.open("r") as input_fp:
-    data = input_fp.read()
+    data = {int(line.strip()) for line in input_fp.readlines()}
+
+GOAL = 2020
+
+for num in data:
+    comp = GOAL - num
+    if comp in data:
+        print(num * comp)
+        break
