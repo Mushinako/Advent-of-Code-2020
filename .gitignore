@@ -1,0 +1,16 @@
+# venv
+Include/
+Lib/
+Scripts/
+pyvenv.cfg
+
+# .vscode
+**/.vscode/
+
+# Python
+**/__pycache__/
+**/*.pyc
+
+# Secrets
+**/token
+**/token.**
