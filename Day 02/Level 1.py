@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Solution to part 2
+Solution to part 1
 """
 from pathlib import Path
 
@@ -15,16 +15,13 @@ with INPUT_FILE_PATH.open("r") as input_fp:
 
 GOAL = 2020
 
-data_tuple = tuple(data)
-
 result = 0
 
-for i, num1 in enumerate(data_tuple[:-2]):
-    for num2 in data_tuple[i + 1 :]:
-        comp = GOAL - num1 - num2
-        if comp > 0 and comp in data:
-            result = num1 * num2 * comp
-            break
+for num in data:
+    comp = GOAL - num
+    if comp in data:
+        result = num * comp
+        break
 
 print(result)
-print(submit_output(2020, 1, 2, result))
+print(submit_output(2020, 2, 1, result))

@@ -27,4 +27,4 @@ for i, num1 in enumerate(data_tuple[:-2]):
             break
 
 print(result)
-print(submit_output(2020, 1, 2, result))
+print(submit_output(2020, 2, 2, result))
