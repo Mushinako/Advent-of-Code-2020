@@ -47,10 +47,16 @@ def get_input(
             cookies=COOKIES,
         ) as response:
             if not response.ok:
+                print(Fore.RED + response.content.decode("utf-8").strip())
                 sleep(1)
                 continue
             response_bytes = response.content
             break
+    print(
+        Fore.GREEN
+        + f"Got input with {len(response_bytes)} characters"
+        + f" and {len(response_bytes.splitlines())} lines"
+    )
     with input_path.open("wb") as input_fp:
         input_fp.write(response_bytes)
 

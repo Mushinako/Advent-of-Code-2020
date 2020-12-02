@@ -9,19 +9,19 @@ from aoc_io.aoc_io import DATA_FILENAME, submit_output
 CURRENT_DIR = Path(__file__).resolve().parent
 INPUT_FILE_PATH = CURRENT_DIR / DATA_FILENAME
 
-# Read input
+# Read input. This time I'll do the processing while reading
+count = 0
 with INPUT_FILE_PATH.open("r") as input_fp:
-    data = {int(line.strip()) for line in input_fp.readlines()}
+    count = 0
+    for line in input_fp:
+        if not (line := line.strip()):
+            break
+        counts, letter, password = line.split()
+        lower, upper = [int(n) for n in counts.split("-")]
+        letter = letter[0]
+        if password.count(letter) in range(lower, upper + 1):
+            count += 1
 
-GOAL = 2020
 
-result = 0
-
-for num in data:
-    comp = GOAL - num
-    if comp in data:
-        result = num * comp
-        break
-
-print(result)
-print(submit_output(2020, 2, 1, result))
+print(count)
+print(submit_output(2020, 2, 1, count))
