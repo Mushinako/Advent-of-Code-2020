@@ -38,6 +38,11 @@ def get_input(
 ) -> None:
     """
     Download input from AOC website
+
+    Args:
+        year       (int)         : The year of AOC
+        day        (int)         : The day of AOC
+        input_path (pathlib.Path): Path of file to write input to
     """
     if day not in range(1, 26):
         raise ValueError(f"{day=} is not in range 1..25")
@@ -69,6 +74,15 @@ def submit_output(
 ) -> str:
     """
     Upload solution to AOC website
+
+    Args:
+        year   (int)      : The year of AOC
+        day    (int)      : The day of AOC
+        level  ([1, 2])   : Whether the submission is for part 1 or 2
+        answer (str | int): Answer to be submitted
+
+    Returns:
+        (str): Success/failure string, with coloring
     """
     if day not in range(1, 26):
         raise ValueError(f"{day=} is not in range 1..25")
