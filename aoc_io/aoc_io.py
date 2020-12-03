@@ -41,7 +41,7 @@ def get_input(
 
     Args:
         year       (int)         : The year of AOC
-        day        (int)         : The day of AOC
+        day        (1..25)       : The day of AOC
         input_path (pathlib.Path): Path of file to write input to
     """
     if day not in range(1, 26):
@@ -77,8 +77,8 @@ def submit_output(
 
     Args:
         year   (int)      : The year of AOC
-        day    (int)      : The day of AOC
-        level  ([1, 2])   : Whether the submission is for part 1 or 2
+        day    (1..25)    : The day of AOC
+        level  (1, 2)     : Whether the submission is for part 1 or 2
         answer (str | int): Answer to be submitted
 
     Returns:
