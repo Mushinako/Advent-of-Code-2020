@@ -1,4 +1,4 @@
-# [Day 02: Toboggan Trajectory](https://adventofcode.com/2020/day/3)
+# [Day 03: Toboggan Trajectory](https://adventofcode.com/2020/day/3)
 
 ## Part 1
 
