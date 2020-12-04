@@ -19,7 +19,7 @@ with INPUT_FILE_PATH.open("r") as input_fp:
         counts, letter, password = line.split()
         lower, upper = [int(n) for n in counts.split("-")]
         letter = letter[0]
-        if password.count(letter) in range(lower, upper + 1):
+        if lower <= password.count(letter) <= upper:
             count += 1
 
 

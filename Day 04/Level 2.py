@@ -16,16 +16,17 @@ with INPUT_FILE_PATH.open("r") as input_fp:
     people = input_fp.read().replace("\n", " ").split("  ")
 
 REQUIRED: dict[str, Callable[[str], bool]] = {
-    "byr": (lambda x: int(x) in range(1920, 2002 + 1)),
-    "iyr": (lambda x: int(x) in range(2010, 2020 + 1)),
-    "eyr": (lambda x: int(x) in range(2020, 2030 + 1)),
+    "byr": (lambda x: 1920 <= int(x) <= 2002),
+    "iyr": (lambda x: 2010 <= int(x) <= 2020),
+    "eyr": (lambda x: 2020 <= int(x) <= 2030),
     "hgt": (
-        lambda x: int(x[:-2])
-        in (range(150, 193 + 1) if x[-2:] == "cm" else range(59, 76 + 1))
+        lambda x: (
+            150 <= int(x[:-2]) <= 193 if x[-2:] == "cm" else 59 <= int(x[:-2]) <= 76
+        )
     ),
     "hcl": (lambda x: bool(re.fullmatch(r"^#[0-9a-f]{6}$", x))),
     "ecl": (lambda x: x in {"amb", "blu", "brn", "gry", "grn", "hzl", "oth"}),
-    "pid": (lambda x: bool(re.fullmatch(r"^\d{9}$", x))),
+    "pid": (lambda x: len(x) == 9 and x.isdigit()),
 }
 
 count = 0
