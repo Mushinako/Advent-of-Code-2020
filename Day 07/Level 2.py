@@ -39,12 +39,12 @@ stack["shiny gold"] = 1
 total_count = 0
 
 while stack:
-    color = next(iter(stack))
-    count = stack[color]
-    del stack[color]
-    rules = map_[color]
+    parent_color = next(iter(stack))
+    parent_count = stack[parent_color]
+    del stack[parent_color]
+    rules = map_[parent_color]
     for child_color, child_count in rules.items():
-        mul_child_count = count * child_count
+        mul_child_count = parent_count * child_count
         total_count += mul_child_count
         stack[child_color] += mul_child_count
 
