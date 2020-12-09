@@ -2,9 +2,6 @@
 """
 Solution to part 1
 """
-# pyright: reportUnknownMemberType=false
-# pyright: reportUnknownVariableType=false
-# pyright: reportUnknownArgumentType=false
 import re
 from collections import defaultdict
 from pathlib import Path
@@ -18,7 +15,7 @@ CHILDREN_COLOR_REGEX = re.compile(r"^\d+ (?P<color>.+) bags?$")
 
 # Read input
 with INPUT_FILE_PATH.open("r") as input_fp:
-    map_ = defaultdict(set)
+    map_: defaultdict[str, set[str]] = defaultdict(set)
     for line in input_fp:
         line = line.strip()
         if not line:

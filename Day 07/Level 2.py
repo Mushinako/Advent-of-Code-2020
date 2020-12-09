@@ -2,9 +2,6 @@
 """
 Solution to part 2
 """
-# pyright: reportUnknownMemberType=false
-# pyright: reportUnknownVariableType=false
-# pyright: reportUnknownArgumentType=false
 import re
 from collections import defaultdict
 from pathlib import Path

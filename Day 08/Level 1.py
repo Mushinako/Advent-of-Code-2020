@@ -2,9 +2,6 @@
 """
 Solution to part 1
 """
-# pyright: reportUnknownMemberType=false
-# pyright: reportUnknownVariableType=false
-# pyright: reportUnknownArgumentType=false
 from pathlib import Path
 
 from aoc_io.aoc_io import DATA_FILENAME, submit_output

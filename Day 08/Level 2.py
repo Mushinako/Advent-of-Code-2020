@@ -2,9 +2,7 @@
 """
 Solution to part 2
 """
-# pyright: reportUnknownMemberType=false
-# pyright: reportUnknownVariableType=false
-# pyright: reportUnknownArgumentType=false
+# pyright: reportGeneralTypeIssues=false
 from pathlib import Path
 
 from aoc_io.aoc_io import DATA_FILENAME, submit_output
@@ -33,8 +31,8 @@ def main(code: list[tuple[str, int]]) -> int:
         new_code[i][0] = replacement
 
         ids = set()
-        acc = 0
-        pointer = 0
+        acc: int = 0
+        pointer: int = 0
 
         while True:
             if pointer >= len(new_code):
