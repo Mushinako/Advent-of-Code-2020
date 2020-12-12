@@ -9,25 +9,25 @@ methods.
 
 ```py
 ship = 0.0 + 0.0j
-d = 1.0 + 0.0j
+direction = 1.0 + 0.0j
 
-for direction, num in moves:
-    if direction == "N":
+for action, num in moves:
+    if action == "N":
         ship += num * (0.0 + 1.0j)
-    elif direction == "S":
+    elif action == "S":
         ship -= num * (0.0 + 1.0j)
-    elif direction == "E":
+    elif action == "E":
         ship += num * (1.0 + 0.0j)
-    elif direction == "W":
+    elif action == "W":
         ship -= num * (1.0 + 0.0j)
-    elif direction == "F":
-        ship += num * d
-    elif direction == "L":
-        d *= cmath.exp(math.radians(num) * 1.0j)
-    elif direction == "R":
-        d /= cmath.exp(math.radians(num) * 1.0j)
+    elif action == "F":
+        ship += num * direction
+    elif action == "L":
+        direction *= cmath.exp(math.radians(num) * 1.0j)
+    elif action == "R":
+        direction /= cmath.exp(math.radians(num) * 1.0j)
     else:
-        raise ValueError(direction)
+        raise ValueError(action)
 
 result = round(abs(ship.real)) + round(abs(ship.imag))
 ```
@@ -42,25 +42,25 @@ if you can spot it.
 
 ```py
 ship = 0.0 + 0.0j
-d = 10.0 + 1.0j
+direction = 10.0 + 1.0j
 
-for direction, num in moves:
-    if direction == "N":
-        d += num * (0.0 + 1.0j)
-    elif direction == "S":
-        d -= num * (0.0 + 1.0j)
-    elif direction == "E":
-        d += num * (1.0 + 0.0j)
-    elif direction == "W":
-        d -= num * (1.0 + 0.0j)
-    elif direction == "F":
-        ship += num * d
-    elif direction == "L":
-        d *= cmath.exp(math.radians(num) * 1.0j)
-    elif direction == "R":
-        d /= cmath.exp(math.radians(num) * 1.0j)
+for action, num in moves:
+    if action == "N":
+        direction += num * (0.0 + 1.0j)
+    elif action == "S":
+        direction -= num * (0.0 + 1.0j)
+    elif action == "E":
+        direction += num * (1.0 + 0.0j)
+    elif action == "W":
+        direction -= num * (1.0 + 0.0j)
+    elif action == "F":
+        ship += num * direction
+    elif action == "L":
+        direction *= cmath.exp(math.radians(num) * 1.0j)
+    elif action == "R":
+        direction /= cmath.exp(math.radians(num) * 1.0j)
     else:
-        raise ValueError(direction)
+        raise ValueError(action)
 
 result = round(abs(ship.real)) + round(abs(ship.imag))
 ```
