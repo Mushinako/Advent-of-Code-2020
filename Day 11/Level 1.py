@@ -3,6 +3,7 @@
 Solution to part 1
 """
 # pyright: reportGeneralTypeIssues=false
+from functools import cache
 from itertools import product
 from pathlib import Path
 
@@ -19,14 +20,21 @@ height = len(map_)
 width = len(map_[0])
 
 
-def get_neighbor_occupied(map_: list[list[str]], coord: tuple[int, int]) -> int:
-    row, col = coord
-    count = sum(
-        map_[r][c] == "#"
+def get_neighbor_occupied(
+    map_: list[list[str]], neighbors: list[tuple[int, int]]
+) -> int:
+    count = sum(map_[r][c] == "#" for r, c in neighbors)
+    return count
+
+
+@cache
+def get_neighbors(row: int, col: int) -> list[tuple[int, int]]:
+    neighbors = [
+        (r, c)
         for r, c in product(range(row - 1, row + 2), range(col - 1, col + 2))
         if 0 <= r < height and 0 <= c < width and (r != row or c != col)
-    )
-    return count
+    ]
+    return neighbors
 
 
 while True:
@@ -35,10 +43,10 @@ while True:
         if map_[r][c] == ".":
             continue
         if map_[r][c] == "L":
-            if get_neighbor_occupied(map_, (r, c)) == 0:
+            if get_neighbor_occupied(map_, get_neighbors(r, c)) == 0:
                 new_map[r][c] = "#"
         else:
-            if get_neighbor_occupied(map_, (r, c)) >= 4:
+            if get_neighbor_occupied(map_, get_neighbors(r, c)) >= 4:
                 new_map[r][c] = "L"
     if new_map == map_:
         break

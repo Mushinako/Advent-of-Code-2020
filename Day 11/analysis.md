@@ -4,17 +4,25 @@
 
 Brute-force approach is taken here, although the solution takes about half a
 minute to run. During each iteration, the neighbors are checked, with
-out-of-bounds ones ignored.
+out-of-bounds ones ignored. Caching
+([dynamic programming](https://en.wikipedia.org/wiki/Dynamic_programming)) is
+used to cache neighbor coordinates.
 
 ```py
-def get_neighbor_occupied(map_: list[list[str]], coord: tuple[int, int]) -> int:
-    row, col = coord
-    count = sum(
-        map_[r][c] == "#"
+def get_neighbor_occupied(
+    map_: list[list[str]], neighbors: list[tuple[int, int]]
+) -> int:
+    count = sum(map_[r][c] == "#" for r, c in neighbors)
+    return count
+
+@cache
+def get_neighbors(row: int, col: int) -> list[tuple[int, int]]:
+    neighbors = [
+        (r, c)
         for r, c in product(range(row - 1, row + 2), range(col - 1, col + 2))
         if 0 <= r < height and 0 <= c < width and (r != row or c != col)
-    )
-    return count
+    ]
+    return neighbors
 ```
 
 ## Part 2
