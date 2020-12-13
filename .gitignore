@@ -13,4 +13,7 @@ pyvenv.cfg
 
 # Secrets
 **/token
-**/token.**
+**/token.*
+**/args
+**/args.*
+aoc_lb/
