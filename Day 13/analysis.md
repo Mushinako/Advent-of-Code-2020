@@ -78,6 +78,8 @@ result = crt(mods_rems)
 
 ### Chinese Remainder Theorem
 
+(Estimated read time 14 minutes; estimated time to understand 2 hours)
+
 #### Intro
 
 The Chinese Remainder Theorem is used to calculate a number that satisfies some
@@ -112,8 +114,9 @@ in writing math using Markdown.
 
 ### The Smart Way
 
-While one can try all numbers between `1000` and `1100`, it's quite tedious. It
-is said that when asked about the calculation, Han said that he first calculated
+While one can try all numbers between `1000` and `1100`, it's quite tedious,
+especially when the range of possible answers is very large. It is said that
+when asked about the calculation, Han said that he first calculated
 `70 * 2 + 21 * 4 + 15 * 3 = 269`; he then kept adding `105` until the number is
 `1000-1100`, and `1004` is the only answer.
 
