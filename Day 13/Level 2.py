@@ -68,7 +68,8 @@ def mul_inv(n: int, m: int) -> int:
         quotient = n // m
         n, m = m, n % m
         x, y = y - quotient * x, x
-    # Make `y` positive, if it isn't
+    # Make `y` positive, if it isn't (Optional, just beware that the final
+    #   result may be negative)
     if y < 0:
         y += tmp
     return y

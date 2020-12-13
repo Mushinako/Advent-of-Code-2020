@@ -67,7 +67,8 @@ def mul_inv(n: int, m: int) -> int:
         quotient = n // m
         n, m = m, n % m
         x, y = y - quotient * x, x
-    # Make `y` positive, if it isn't
+    # Make `y` positive, if it isn't (Optional, just beware that the final
+    #   result may be negative)
     if y < 0:
         y += tmp
     return y
@@ -78,7 +79,7 @@ result = crt(mods_rems)
 
 ### Chinese Remainder Theorem
 
-(Estimated read time 14 minutes; estimated time to understand 2 hours)
+(Estimated read time 15 minutes; estimated time to understand 2 hours)
 
 #### Intro
 
@@ -402,6 +403,19 @@ A small "hack" is to initiate `x` as `0` and `y` as `1`. This will increase the
 number of loops run by 2, but it frees you from having to manually calculate the
 starting numbers.
 
+Above we got `1 = 3  (12) + 35 * (-1)`, which translates to
+`35 * (-1) ≡ 1 (mod 3)`. While you can use `35 * (-1) = -35` as your multiplicant
+for remainder of 3, which is perfectly valid, usually we just keep adding the
+modulus, in this case, `3`, to the `-1` until it becomes positive:
+
+```text
+35 * (-1) ≡ 35 * (-1 + 3) = 35 * 2 = 70 (mod 3)
+```
+
+Voila! Here's our 70!
+
+Use the same process on `5` and `7`, and you'll get `21` and `15`, respectively.
+
 ```py
 def mul_inv(n: int, m: int) -> int:
     """
@@ -428,7 +442,8 @@ def mul_inv(n: int, m: int) -> int:
         quotient = n // m
         n, m = m, n % m
         x, y = y - quotient * x, x
-    # Make `y` positive, if it isn't
+    # Make `y` positive, if it isn't (Optional, just beware that the final
+    #   result may be negative)
     if y < 0:
         y += tmp
     return y
