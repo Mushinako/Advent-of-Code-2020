@@ -155,9 +155,9 @@ numbers:
 
 ### Why `70`, `21`, `15`, and `105`?
 
-That's all nice and good, but *how* did I get those numbers? So far I just pulled
-them out of thin air and showed that they're special, but I haven't discussed how
-to find them.
+That's all nice and good, but *where* did I get those numbers? So far I just
+pulled them out of thin air and showed that they're special, but I haven't
+discussed how to find them.
 
 The `105` is probably the easiest to find. It needs to have a remainder of `0`
 when divided by all the moduli. In other words, it has to be a multiple of all
@@ -363,7 +363,7 @@ Summarizing the essential math part of calculations above:
 1 =  3 - ( 3 // 2) * 2
 2 = 35 - (35 // 3) * 3
 ^    ^       ^       ^
-n%m  n/y  quotient   m/x
+n%m  n(y) quotient   m(x)
 ```
 
 In essence, the algorithm calls for a loop with thesee statements:
