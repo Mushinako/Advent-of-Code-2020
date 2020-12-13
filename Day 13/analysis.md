@@ -131,7 +131,8 @@ and `31 + 31 = 31 * 2 = 62`:
  31 ≡ 3 (mod 7); 31 + 31 = 31 * 2 = 62 ≡ 6 = 3 * 2 = 3 + 3 (mod 7)
 ```
 
-So in general, if `n ≡ a (mod m)`, then `n * b ≡ a * b (mod m)`.
+So in general, if `n ≡ a (mod m)`, then `n + b ≡ a + b (mod m)` and
+`n * b ≡ a * b (mod m)`.
 
 Now let's check how `70 * 2 + 21 * 4 + 15 * 3` mods `3`, `5`, and `7`:
 
@@ -141,7 +142,7 @@ Now let's check how `70 * 2 + 21 * 4 + 15 * 3` mods `3`, `5`, and `7`:
 269 = 70 * 2 + 21 * 4 + 15 * 3 ≡ 0 * 2 + 0 * 4 + 1 * 3 = 3 (mod 7)
 ```
 
-Hey! `70 * 2 + 21 * 4 + 15 * 3` satisfies our constraint!
+Hey! `70 * 2 + 21 * 4 + 15 * 3` satisfies our constraints!
 
 Now we can keep adding or subtracting `105`, which is `0` when modded by all 3
 numbers:
