@@ -184,7 +184,10 @@ The `105` is probably the easiest to find. It needs to have a remainder of `0`
 when divided by all the moduli. In other words, it has to be a multiple of all
 the moduli. The
 [least common multiple](https://en.wikipedia.org/wiki/Least_common_multiple) is
-a good choice, and in Python 3.9+ we have `math.lcm` to calculate that.
+a good choice, and in Python 3.9+ we have `math.lcm` to calculate that. (In fact,
+you can directly calculate the product of all these numbers, given that they're
+[coprime](https://en.wikipedia.org/wiki/Coprime_integers) to one another. More
+explanation on this in the [endnote](#endnote))
 
 Finding `70`, `21`, and `15` are much trickier. These numbers have to have a
 remainder of `1` when divided by one of the moduli, and `0` for all other moduli.
