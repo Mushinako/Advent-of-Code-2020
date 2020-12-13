@@ -120,7 +120,7 @@ when asked about the calculation, Han said that he first calculated
 `70 * 2 + 21 * 4 + 15 * 3 = 269`; he then kept adding `105` until the number is
 `1000-1100`, and `1004` is the only answer.
 
-### Why does `70 * 2 + 21 * 4 + 15 * 3` work?
+### Why Does `70 * 2 + 21 * 4 + 15 * 3` Adding Multiple `105`s Work?
 
 While the `2`, `4`, and `3` in the above formula makes sense, where does the
 other numbers `70`, `21`, `15`, and `105` come from?
