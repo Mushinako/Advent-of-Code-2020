@@ -22,17 +22,31 @@ small. Nevertheless, I still decided to go for
 def crt(mods_rems: list[tuple[int, int]]) -> int:
     """
     Chinese Remainder Theorem
+
+    Args:
+        mods_rems (list[tuple[int, int]]): List of [modulus, remainder] pairs
+
+    Returns:
+        (int): The smallest positive number that satisfies all the
+               modulus-remainder constraints.
     """
     sum_ = 0
+    # Least common multiple of all moduli
     prod = lcm(*(m for m, _ in mods_rems))
+    # Iterate through each modulus, find multiple of all other moduli and
+    #   multiply it by it's multiplicative inverse
     for mod, rem in mods_rems:
+        # This is the lcm of all other moduli because the moduli are assumed to
+        #   be coprime with one another
         prod_left = prod // mod
+        # Add remainder * lcm(other moduli) * its multiplicative inverse
         sum_ += rem * prod_left * mul_inv(prod_left, mod)
     return sum_ % prod
 
 def mul_inv(n: int, m: int) -> int:
     """
-    Calculate n^(-1) mod m
+    Calculate n^(-1) mod m, or equivalently, find y for n*y + m*x = 1 via the
+      Extended Euclidean Algorithm
 
     Args:
         n (int): The number to be inverted
@@ -41,15 +55,19 @@ def mul_inv(n: int, m: int) -> int:
     Returns:
         (int): The multiplicative inverse
     """
+    # Mod 1, not very useful
     if m == 1:
         return 1
+    # Keep a record of the original modulus
     tmp = m
+    # Initiate x, y as 0, 1
     x = 0
     y = 1
     while n > 1:
-        q = n // m
+        quotient = n // m
         n, m = m, n % m
-        x, y = y - q * x, x
+        x, y = y - quotient * x, x
+    # Make `y` positive, if it isn't
     if y < 0:
         y += tmp
     return y
@@ -363,7 +381,7 @@ Summarizing the essential math part of calculations above:
 1 =  3 - ( 3 // 2) * 2
 2 = 35 - (35 // 3) * 3
 ^    ^       ^       ^
-n%m  n(y) quotient   m(x)
+n%m n(y) quotient   m(x)
 ```
 
 In essence, the algorithm calls for a loop with thesee statements:
