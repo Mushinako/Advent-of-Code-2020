@@ -8,6 +8,8 @@ Get input from and submit answer to AOC
 # pyright: reportOptionalMemberAccess=false
 
 from time import sleep
+from datetime import datetime
+from zoneinfo import ZoneInfo
 from string import Template
 from pathlib import Path
 from typing import Literal, Union
@@ -46,7 +48,18 @@ def get_input(
     """
     if day not in range(1, 26):
         raise ValueError(f"{day=} is not in range 1..25")
-    while True:
+    target_time_est = datetime(
+        year, 12, day - 1, 23, 59, 59, 500_000, tzinfo=ZoneInfo("EST")
+    )
+    target_time_local = datetime.fromtimestamp(target_time_est.timestamp())
+    while (now := datetime.now()) < target_time_local:
+        diff = target_time_local - now
+        seconds = diff.days * 86400 + diff.seconds
+        print(f"{seconds} seconds until problem opens. Waiting...")
+        sleep(max(diff.seconds - 1, 1))
+    print("Downloading...")
+    for i in range(3):
+        print(f"Try #{i}")
         with requests.get(
             DATA_URL.substitute(year=year, day=day),
             cookies=COOKIES,
@@ -57,6 +70,9 @@ def get_input(
                 continue
             response_bytes = response.content
             break
+    else:
+        print("Download failed!")
+        return
     print(
         Fore.GREEN
         + f"Got input with {len(response_bytes)} characters"

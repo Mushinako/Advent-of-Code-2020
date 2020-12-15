@@ -23,12 +23,7 @@ for action, value in instructions:
     else:
         index = int(action[4:-1])
         binary = bin(int(value))[2:].zfill(36)
-        new_binary = ""
-        for i in range(36):
-            if mask[i] == "X":
-                new_binary += binary[i]
-            else:
-                new_binary += mask[i]
+        new_binary = "".join(b if m == "X" else m for m, b in zip(mask, binary))
         memory[index] = int(new_binary, 2)
 
 result = sum(memory.values())
