@@ -18,7 +18,7 @@ def _read_input() -> list[str]:
     Read and parse the input file
 
     Returns:
-        (list[list[bool]]): Puzzle input
+        (list[str]): Puzzle input
     """
     with _INPUT_FILE_PATH.open("r") as fp:
         lines = [line for l in fp if (line := l.strip())]
