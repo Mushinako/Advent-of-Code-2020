@@ -19,6 +19,9 @@ class _BaseImage:
     """
     Image base class
 
+    Args:
+        data (list[str]): Original image piece
+
     Public Attributes:
         rotated_data (list[str]): Rotated image piece
         rotation     (int)      : Rotation indicator, a number 0-7, inclusive
@@ -72,6 +75,9 @@ class _BaseImage:
 class ImagePiece(_BaseImage):
     """
     A piece of image
+
+    Args:
+        data (set[str]): Rotated image piece
 
     Public Attributes:
         unique_borders (set[str]): Set of unique borders this image has
